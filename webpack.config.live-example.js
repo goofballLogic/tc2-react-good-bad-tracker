@@ -7,7 +7,7 @@ module.exports = {
     output: {
 
         filename: "live-example.js",
-        path: path.resolve( __dirname, "dist" ),
+        path: path.resolve( __dirname, "docs" ),
         libraryTarget: "umd"
 
     },
