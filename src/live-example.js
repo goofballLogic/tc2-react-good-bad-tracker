@@ -3,14 +3,18 @@ import { render } from "react-dom";
 import { Menu } from "./index";
 import { generateMenu } from "./live-example-data";
 
+// https://tc2-react-good-bad-tracker-goofballlogic.c9users.io
+
 class LiveExample extends Component {
     
     constructor() {
         
         super();
+        
         this.state = {
-            
-            items: generateMenu( 6 )
+        
+            sprint: 3,    
+            items: generateMenu( 5 )
             
         };
         
@@ -20,6 +24,7 @@ class LiveExample extends Component {
 
         this.setState( {
             
+            sprint: this.state.sprint + 1,
             items: generateMenu( this.state.items.length )
             
         } );
@@ -32,8 +37,9 @@ class LiveExample extends Component {
             
             <article className="live-example">   
             
-                <h2>A menu</h2>
                 <button onClick={ this.handleRegenerateClick.bind( this ) }>Regenerate data</button>
+            
+                <h2>Sprint {this.state.sprint}: Top priorities</h2>
                 <Menu items={ this.state.items } />
                 
             </article>

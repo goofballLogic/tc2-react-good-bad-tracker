@@ -11,6 +11,15 @@ module.exports = {
         libraryTarget: "umd"
 
     },
+    devServer: {
+        
+        contentBase: "./docs",
+        compress: true,
+        port: 8080,
+        host: "0.0.0.0",
+        disableHostCheck: true
+        
+    },
     module: {
 
         rules: [

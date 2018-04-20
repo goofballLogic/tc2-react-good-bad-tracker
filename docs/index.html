@@ -7,47 +7,116 @@ title: Home
 
 <style>
     
-    #live-example .menu{
+    
+    .choices {
         
-        display: flex;
+        counter-reset: choice;
         max-width: 800px;
-        height: 400px;
-        border-radius: 10px;
-        overflow-x: hidden;
-        overflow-y: auto;
-        box-shadow: 0 0 5px -2px black;
+        line-height: 1.5;
         
     }
-    #live-example .choices {
+    .choice {
         
-        flex-basis: auto;
-        max-width: 300px;
-        margin-right: 10px;
-        border-right: solid 1px #777;
+        font-size: 10pt;
+        font-family: Arial;
+        display: block;
         
     }
-    #live-example .choice .label-text {
+    .choice .choice-content {
         
         display: block;
         padding: 10px;
-        border: solid 1px transparent;
+        border-left: solid 5px transparent;
+
+    }
+    .choice:hover .choice-content {
+        
+        border-left: solid 5px silver;
         
     }
-    #live-example .choice:hover .label-text {
+    .choice input:checked + .choice-content {
         
-        background-color: #EEE;
-        
-    }
-    #live-example .choice input:checked + .label-text {
-        
-        background-color: #DDD;
+        border-left-color: #DEF;
+        background: linear-gradient(to right, #DEF, #FFF);
         
     }
-    #live-example .choice input {
+    .choice input {
         
         display: none;
         
     }
+    .choice-content .title::before {
+        
+        counter-increment: choice;
+        content: counter(choice);
+        display: inline-block;
+        border-radius: 99px;
+        width: 1.5em;
+        height: 1.5em;
+        text-align: center;
+        line-height: 1.5em;
+        margin-right: 5px;
+        background-color: black;
+        color: white;
+        opacity: 0.5;
+        
+    }
+    .choice-content .title {
+        
+        display: block;
+        font-size: 1.5em;
+        margin-bottom: 5px;
+        
+    }
+    .choice-content .specifics {
+        
+        display: block;
+        font-style: italic;
+        
+    }
+    .choice-content .scores .none {
+        
+        display: none;
+        
+    }
+    .choice-content .score {
+        
+        width: 2em;
+        height: 2em;
+        text-align: center;
+        line-height: 2em;
+        display: inline-block;
+        margin-left: 5px;
+        
+    }
+    .choice-content .score.up {
+
+        color: #070;
+        background-color: #DFD;
+        
+    }
+    .choice-content .score.up::before {
+        
+        content: "+";
+        
+    }
+    .choice-content .score.down {
+        
+        color: #700;
+        background-color: #FDD;
+        
+    }
+    .choice-content .score.down::before {
+        
+        content: "-";
+        
+    }
+    .choice-content .scores .score-text {
+        
+        display: none;
+        
+    }
+    
     
 </style>
 <article id="live-example">
