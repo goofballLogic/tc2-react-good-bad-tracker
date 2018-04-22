@@ -7,6 +7,16 @@ title: Home
 
 <style>
     
+    #live-example * {
+        
+        box-sizing: border-box;
+        
+    }
+    #live-example {
+        
+        min-height: 1000px;
+        
+    }
     
     .choices {
         
@@ -24,9 +34,16 @@ title: Home
     }
     .choice .choice-content {
         
+        max-width: 800px;
+        max-height: 250px;
         display: block;
         padding: 10px;
         border-left: solid 5px transparent;
+        margin-left: 0;
+        margin-top: 0;
+        transition: margin-left 0.3s 0.6s, 
+                    max-height 0.3s,
+                    padding 0.3s;
 
     }
     .choice:hover .choice-content {
@@ -34,10 +51,32 @@ title: Home
         border-left: solid 5px silver;
         
     }
+    .chosen .choice-content {
+        
+        margin-left: -100%;
+        max-height: 0;
+        padding: 0;
+        transition: margin-left 0.3s , 
+                    max-height 0.3s 0.6s,
+                    padding 0.3s 0.6s;
+    }
+    .deselect {
+        
+        display: none;
+        
+    }
+    .chosen .deselect {
+        
+        display: block;
+        
+    }
     .choice input:checked + .choice-content {
         
-        border-left-color: #DEF;
-        background: linear-gradient(to right, #DEF, #FFF);
+        border-left-color: #EEF;
+        background: linear-gradient(to right, #F7FAFF, #FFF);
+        margin-left: 0;
+        max-height: 250px;
+        padding: 10px;
         
     }
     .choice input {
@@ -74,7 +113,8 @@ title: Home
         font-style: italic;
         
     }
-    .choice-content .scores .none {
+    .choice-content .scores .none,
+    .choice-content .scores .false {
         
         display: none;
         

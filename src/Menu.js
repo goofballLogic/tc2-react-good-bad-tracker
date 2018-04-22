@@ -1,19 +1,50 @@
 import React from "react";
+import expand from "./expand";
 
 let seed = Date.now();
 
 const generateName = () => `menu-${seed}-${Math.random()}`;
-    
-const Score = ( { name, score, children } ) => <span className={ `score ${name} ${score ? "" : "none"}` } title={ name + " " + children }>
+const byScoreSum = ( a, b ) => ( ( asum, bsum ) => bsum - asum )( ( a.upScore || 0 ) + ( a.downScore || 0 ), ( b.upScore || 0 ) + ( b.downScore || 0 ) );
+const noop = () => {};
 
-    <span className="score-text">{ children }</span>
-    <span className="score-value">{ score }</span>
+const template = { 
     
-</span>;
-                        
-const byScoreSum = ( a, b ) => ( ( asum, bsum ) => console.log( bsum, asum ) || bsum - asum )( ( a.upScore || 0 ) + ( a.downScore || 0 ), ( b.upScore || 0 ) + ( b.downScore || 0 ) );
+    "div": true, 
+    "key": "scorable",
+    "className": "{key} choice-content",
+    "items": [
+    
+        "title",
+        "specifics",
+        "measurement",
+        {
+            
+            "key": "scores", 
+            "items": [
+                
+                { 
+                    
+                    "key": "up",
+                    "prop": "upScore",
+                    "className": "score {key} {truthiness}"
+                    
+                },
+                { 
+                    "key": "down",
+                    "prop": "downScore",
+                    "className": "score {key} {truthiness}"
+                    
+                }
+            
+            ]
+            
+        }
+        
+    ]
+    
+};
 
-export default ( { items, name = generateName() } ) =>
+export default ( { items, name = generateName(), onChange = noop, chosen } ) =>
 
     <section className="menu">
     
@@ -22,20 +53,8 @@ export default ( { items, name = generateName() } ) =>
 
             <label className="choice" key={ x.id }>
             
-                <input type="radio" name={ name } value={ x.id } />
-                <div className="choice-content">
-                    
-                    <span className="title">{ x.title }</span>
-                    <span className="specifics">{ x.specifics }</span>
-                    <span className="measurement">{ x.measurement }</span>
-                    <span className="scores">
-                        
-                        <Score name="up" score={ x.upScore }>Yes:</Score>
-                        <Score name="down" score={ x.downScore }>No:</Score>
-                        
-                    </span>
-                    
-                </div>
+                <input type="radio" checked={ !!( chosen && chosen.id === x.id ) } name={ name } value={ x.id } onChange={ e => onChange( e, x ) } />
+                {expand( template, x )}
                 
             </label>
             
