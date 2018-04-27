@@ -17,7 +17,13 @@ title: Home
         min-height: 1000px;
         
     }
+    #live-example,
+    #live-example td {
+        
+        font-size: 10pt;
+        font-family: Arial;
     
+    }
     .choices {
         
         counter-reset: choice;
@@ -27,8 +33,6 @@ title: Home
     }
     .choice {
         
-        font-size: 10pt;
-        font-family: Arial;
         display: block;
         
     }
@@ -42,9 +46,9 @@ title: Home
         border-left: solid 5px transparent;
         margin-left: 0;
         margin-top: 0;
-        transition: margin-left 0.3s 0.3s, 
-                    max-height 0.3s,
-                    padding 0.3s;
+        transition: margin-left 0.2s 0.2s, 
+                    max-height 0.2s,
+                    padding 0.2s;
 
     }
     @media screen and (max-width: 800px) {
@@ -66,9 +70,9 @@ title: Home
         margin-left: -200vw;
         max-height: 0;
         padding: 0;
-        transition: margin-left 0.3s , 
-                    max-height 0.3s 0.3s,
-                    padding 0.3s 0.3s;
+        transition: margin-left 0.2s , 
+                    max-height 0.2s 0.2s,
+                    padding 0.2s 0.2s;
     }
     .deselect {
         
@@ -78,6 +82,11 @@ title: Home
     .chosen .deselect {
         
         display: block;
+        
+    }
+    .choice input:focus + .choice-content {
+        
+        border-left-color: #EEF;
         
     }
     .choice input:checked + .choice-content {
@@ -91,7 +100,8 @@ title: Home
     }
     .choice input {
         
-        display: none;
+        position: absolute;
+        top: -100px;
         
     }
     .choice-content .title::before {
@@ -167,6 +177,114 @@ title: Home
         
     }
     
+    .scoring table {
+        
+        border-spacing: 5px;
+        
+    }
+    .scoring td {
+        
+        vertical-align: middle;
+        text-align: center;
+        
+    }
+    .scoring .one-of {
+        
+        padding: 0 10px;
+        
+    }
+    .scoring .one-of-option {
+        
+        flex: 1;
+        
+    }
+    .scoring .one-of-option input {
+        
+        position: absolute;
+        left: -100px;
+        
+    }
+    .scoring .one-of-option .content {
+
+        display: inline-block;
+        transform: scale(0.5);
+        fill: #EEE;
+        padding: 0 5px;
+        
+    }
+    .scoring .one-of-option:hover .content {
+        
+        transform: scale(1);
+        fill: #777;
+        
+    }
+    .scoring .one-of-option input:focus+.content svg {
+        
+        transform: scale(1);
+        fill #777;
+        transform: scale( 1.1 );
+    }
+    .scoring .one-of-option .content svg {
+        
+        width: 30px;
+        height: 30px;
+        
+    }    
+    .scoring .one-of-option input:checked+.content {
+
+        transform: scale( 1 );
+
+    }
+
+    .scoring .one-of-option--:not(:hover) input:checked:not(:focus)+.content {
+        
+        transform: scale(0.5);
+        
+    }
+    .scoring .one-of-option-up input:checked+.content {
+        
+        stroke: green;
+        fill: green;
+        
+    }
+    .scoring .one-of-option-down input:checked+.content {
+        
+        stroke: red;
+        fill: red;
+        
+    }
+    .scoring .score-diff .down,
+    .scoring .score-diff .up {
+        
+        width: 2em;
+        height: 2em;
+        line-height: 2em;
+        text-align: center;
+        display: inline-block;
+        
+    }
+    .scoring .score-diff .down {
+        
+        color: #700;
+        background-color: #FDD;
+        
+    }
+    .scoring .score-diff .down::before {
+        
+        content: "-";
+        
+    }
+    .scoring .score-diff .up {
+        
+        color: #070;
+        background-color: #DFD;
+        
+    }
+    .scoring .score-diff .up::before {
+        
+        content: "+";
+        
+    }
     
 </style>
 <article id="live-example">

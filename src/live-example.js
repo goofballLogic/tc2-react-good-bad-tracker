@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { render } from "react-dom";
 import { Menu } from "./index";
 import { Scoring } from "./index";
-import { generateMenu } from "./live-example-data";
+import { generateMenu, generateScorees } from "./live-example-data";
 
 // https://tc2-react-good-bad-tracker-goofballlogic.c9users.io
 
@@ -16,6 +16,7 @@ class LiveExample extends Component {
         
             sprint: 3,    
             items: generateMenu( 5 ),
+            scorees: generateScorees( 4 ),
             chosen: null
             
         };
@@ -28,6 +29,7 @@ class LiveExample extends Component {
             
             sprint: this.state.sprint + 1,
             items: generateMenu( this.state.items.length ),
+            scorees: generateScorees( this.state.scorees.length ),
             chosen: null
             
         } );
@@ -36,13 +38,23 @@ class LiveExample extends Component {
     
     handleChange( e, chosen ) {
         
-        this.setState( { chosen } );
+        this.setState( { 
+            
+            chosen,
+            selected: undefined
+            
+        } );
         
     }
     
     handleDeselect( e ) {
         
-        this.setState( { chosen: undefined } );
+        this.setState( { 
+            
+            chosen: undefined,
+            selected: undefined
+            
+        } );
         
     }
     
@@ -57,9 +69,8 @@ class LiveExample extends Component {
                 <section className={ this.state.chosen ? "chosen" : "" }>
 
                     <Menu items={ this.state.items } onChange={ this.handleChange.bind( this ) } chosen={ this.state.chosen } />
-                    <button className="deselect" onClick={ this.handleDeselect.bind( this ) }>cancel</button>
-                    <p>Chosen: { JSON.stringify( this.state.chosen ) }</p>
-                    <Scoring target={ this.state.chosen } />
+                    <p><button className="deselect" onClick={ this.handleDeselect.bind( this ) }>cancel</button></p>
+                    <Scoring target={ this.state.chosen } scorees={ this.state.scorees } handleChange={ selected => this.setState( { selected } ) } />
                     
                 </section>
                 

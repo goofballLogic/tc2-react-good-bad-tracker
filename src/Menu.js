@@ -10,7 +10,7 @@ const noop = () => {};
 const template = { 
     
     "div": true, 
-    "key": "scorable",
+    "keyProp": "id",
     "className": "{key} choice-content",
     "items": [
     

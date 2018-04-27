@@ -129,3 +129,16 @@ export function generateMenu( n ) {
     } ) );
     
 }
+
+const names = [ "Lisa", "Bob", "Tia", "Yashi", "Ethan", "Elliott", "Ioulia", "Gareth", "Sam", "Endy", "Stephen", "Chris", "Damian", "Hakan" ];
+export function generateScorees( n ) {
+    
+    return randoms( names, n ).map( x => ( {
+        
+        id: nonce++,
+        name: x,
+        score: Math.ceil( Math.random() * 20 ) - 5
+        
+    } ) );
+    
+}
