@@ -60,11 +60,12 @@ class LiveExample extends Component {
     
     render() {
         
-        return (
+        return <div className="live-example">
+
+            <button onClick={ this.handleRegenerateClick.bind( this ) }>Regenerate data</button>
+            <article className="score-by-goal">   
             
-            <article className="live-example">   
-            
-                <button onClick={ this.handleRegenerateClick.bind( this ) }>Regenerate data</button>
+                <h1>Scoring by goal</h1>
                 <h2>Sprint {this.state.sprint}: Top priorities</h2>
                 <section className={ this.state.chosen ? "chosen" : "" }>
 
@@ -75,9 +76,14 @@ class LiveExample extends Component {
                 </section>
                 
             </article>
+            <article className="score-by-goal">
             
-        );
+                <h1>Score by person</h1>
+                
+            </article>
         
+        </div>;
+
     }
     
 }
