@@ -143,12 +143,17 @@ export function generateScorees( n ) {
     
 }
 
-export const scoreeTemplate = [
-    
-    "name",
-    "score"
-    
-];
+export const scoreeTemplate = {
+ 
+    className: "parts",
+    items: [
+
+        "name",
+        "score"
+        
+    ]
+
+};
 
 export const goalsTemplate = [
     
