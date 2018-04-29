@@ -142,3 +142,40 @@ export function generateScorees( n ) {
     } ) );
     
 }
+
+export const scoreeTemplate = [
+    
+    "name",
+    "score"
+    
+];
+
+export const goalsTemplate = [
+    
+    "title",
+    "specifics",
+    "measurement",
+    {
+        
+        "key": "scores", 
+        "items": [
+            
+            { 
+                
+                "key": "up",
+                "prop": "upScore",
+                "className": "score {key} {truthiness}"
+                
+            },
+            { 
+                "key": "down",
+                "prop": "downScore",
+                "className": "score {key} {truthiness}"
+                
+            }
+        
+        ]
+        
+    }
+        
+];

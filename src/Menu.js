@@ -7,58 +7,25 @@ const generateName = () => `menu-${seed}-${Math.random()}`;
 const byScoreSum = ( a, b ) => ( ( asum, bsum ) => bsum - asum )( ( a.upScore || 0 ) + ( a.downScore || 0 ), ( b.upScore || 0 ) + ( b.downScore || 0 ) );
 const noop = () => {};
 
-const template = { 
+export default ( { items, name = generateName(), onChange = noop, chosen, template } ) => <section className={ `menu ${chosen ? "chosen" : ""}` }>
     
-    "div": true, 
-    "keyProp": "id",
-    "className": "{key} choice-content",
-    "items": [
-    
-        "title",
-        "specifics",
-        "measurement",
-        {
-            
-            "key": "scores", 
-            "items": [
-                
-                { 
-                    
-                    "key": "up",
-                    "prop": "upScore",
-                    "className": "score {key} {truthiness}"
-                    
-                },
-                { 
-                    "key": "down",
-                    "prop": "downScore",
-                    "className": "score {key} {truthiness}"
-                    
-                }
-            
-            ]
-            
-        }
+    <div className="choices">
+    { items.slice( 0 ).sort( byScoreSum ).map( x => (
+
+        <label className="choice" key={ x.id }>
         
-    ]
-    
-};
+            <input type="radio" checked={ !!( chosen && chosen.id === x.id ) } name={ name } value={ x.id } onChange={ e => onChange( e, x ) } />
+            <div className="choice-content">
 
-export default ( { items, name = generateName(), onChange = noop, chosen } ) =>
-
-    <section className="menu">
-    
-        <div className="choices">
-        { items.slice( 0 ).sort( byScoreSum ).map( x => (
-
-            <label className="choice" key={ x.id }>
-            
-                <input type="radio" checked={ !!( chosen && chosen.id === x.id ) } name={ name } value={ x.id } onChange={ e => onChange( e, x ) } />
                 {expand( template, x )}
+                <button mode="button" className="choose" onClick={e => onChange( e, x )}>Choose</button>
+                <button mode="button" className="cancel" onClick={e => onChange( e, undefined )}>Done</button>
                 
-            </label>
+            </div>
             
-        ) ) }
-        </div>
+        </label>
+        
+    ) ) }
+    </div>
 
-    </section>;
+</section>;

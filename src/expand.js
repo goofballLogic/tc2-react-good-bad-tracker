@@ -38,18 +38,18 @@ const keyOf = ( ti, d ) => ti.keyProp
     ? d[ ti.keyProp ]
     : ti.key;
     
-const divOrSpan = ( ti, d, content ) => ti.div
-    ? <div key={ keyOf( ti, d ) } className={ classNameOf( ti, d ) }>{content}</div>
-    : <span key={ keyOf( ti, d ) } className={ classNameOf( ti, d ) }>{content}</span>;
+const element = ( ti, d, content ) => 
+    ti.div ? <div key={ keyOf( ti, d ) } className={ classNameOf( ti, d ) }>{content}</div> :
+    <span key={ keyOf( ti, d ) } className={ classNameOf( ti, d ) }>{content}</span>;
     
 const contentOf = ( ti, d ) => "items" in ti
-    ? ti.items.map( tii => divOrSpan( tii, d, contentOf( tii, d ) ) )
+    ? ti.items.map( tii => element( tii, d, contentOf( tii, d ) ) )
     : d
         ? d[ ti.prop ] 
         : null;
         
 export default function expand( t, d ) {
     
-    return asItems( t ).map( ti => divOrSpan( ti, d, contentOf( ti, d ) ) );
+    return asItems( t ).map( ti => element( ti, d, contentOf( ti, d ) ) );
     
 }

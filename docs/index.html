@@ -17,14 +17,6 @@ title: Home
         min-height: 1000px;
         
     }
-    .score-by-goal h1 {
-        
-        padding: 5px;
-        background-color: silver;
-        color: white;
-        
-        
-    }
     #live-example,
     #live-example td {
         
@@ -82,25 +74,13 @@ title: Home
                     max-height 0.2s 0.2s,
                     padding 0.2s 0.2s;
     }
-    .deselect {
-        
-        display: none;
-        
-    }
-    .chosen .deselect {
-        
-        display: block;
-        
-    }
     .choice input:focus + .choice-content {
         
-        border-left-color: #EEF;
+        border-left-color: silver;
         
     }
     .choice input:checked + .choice-content {
         
-        border-left-color: #EEF;
-        background: linear-gradient(to right, #F7FAFF, #FFF);
         margin-left: 0;
         max-height: 250px;
         padding: 10px;
@@ -184,7 +164,55 @@ title: Home
         display: none;
         
     }
+    .choice-content .cancel {
+        
+        display: none;
+        
+    }
+    .choice-content .choose {
+        
+        display: block;
+        
+    }
+    .chosen .choice-content .cancel {
+        
+        display: block;
+        
+    }
+    .chosen .choice-content .choose {
+        
+        display: none;
+        
+    }
     
+    .score-by-person .choice .choice-content,
+    .score-by-person .choice input:checked + .choice-content {
+        
+        padding: 0 10px;
+        
+    }
+    .score-by-person .name {
+        
+        display: inline-block;
+        min-width: 100px;
+        
+    }
+    .score-by-person .choice-content .choose {
+        
+        display: inline-block;
+        
+    }
+    .score-by-person .chosen .choice-content .choose {
+        
+        display: none;
+        
+    }
+    .score-by-person .chosen .choice-content .cancel {
+        
+        display: inline-block;
+        
+    }
+
     .scoring table {
         
         border-spacing: 5px;
