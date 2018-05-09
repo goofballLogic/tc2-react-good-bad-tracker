@@ -145,6 +145,7 @@ export function generateScorees( n ) {
 
 export const scoreeTemplate = {
  
+    key: "id",
     className: "parts",
     items: [
 

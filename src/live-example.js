@@ -6,6 +6,8 @@ import { generateMenu, goalsTemplate, generateScorees, scoreeTemplate } from "./
 
 // https://tc2-react-good-bad-tracker-goofballlogic.c9users.io
 
+const decorateMenu = x => console.log( x ) || x;
+
 class ScoringByGoal extends Component {
     
     constructor() {
@@ -59,7 +61,8 @@ class ScoringByGoal extends Component {
                 <Menu       items={ this.state.items } 
                             onChange={ this.handleChange.bind( this ) } 
                             chosen={ this.state.chosen }
-                            template={ goalsTemplate } />
+                            template={ goalsTemplate }
+                            decorate={ decorateMenu } />
                 <Scoring    target={ this.state.chosen }
                             scorees={ this.state.scorees }
                             handleChange={ selected => this.setState( { selected } ) } />

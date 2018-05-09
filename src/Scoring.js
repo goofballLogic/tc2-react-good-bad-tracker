@@ -15,6 +15,8 @@ const targetOptions = target => [
     
 ].filter( x => x );
 
+const thru = x => x;
+
 const scoreOf = ( selected, target ) => 
     selected === UP ? <span className="up">{target.upScore}</span> :
     selected === DOWN ? <span className="down">{target.downScore}</span> :
@@ -27,9 +29,9 @@ const scoreResult = ( score, selected, target ) =>
     selected === DOWN ? <span className="down">{ num( score ) - num( target.downScore ) }</span> :
     null;
 
-const Scoree = ( { id, name, score, target, selected, handleChange } ) => <tr className="scoree">
+const Scoree = ( { id, name, score, target, selected, handleChange, decorate } ) => <tr className={decorate( "scoree" )}>
     
-    <td className="name">{name}</td>
+    <td className={decorate( "name" )}>{name}</td>
     <td>
         <OneOf 
             name = { id }
@@ -37,9 +39,9 @@ const Scoree = ( { id, name, score, target, selected, handleChange } ) => <tr cl
             selected = { selected || NEITHER }
             handleChange = { handleChange } />
     </td>
-    <td className="score">{score}</td>
-    <td className="score-diff">{scoreOf( selected, target )}</td>
-    <td className="score-result">{scoreResult( score, selected, target )}</td>
+    <td className={decorate( "score" )}>{score}</td>
+    <td className={decorate( "score-diff" )}>{scoreOf( selected, target )}</td>
+    <td className={decorate( "score-result" )}>{scoreResult( score, selected, target )}</td>
     
 </tr>;
 
@@ -85,9 +87,9 @@ export default class Scoring extends Component {
     
     render() {
         
-        const { target, scorees } = this.props;
+        const { target, scorees, decorate = thru } = this.props;
         if ( !( target && scorees ) ) return null;
-        return <div className="scoring">
+        return <div className={decorate( "scoring" )}>
     
             <table><tbody>
             { scorees.map( s => 
@@ -96,6 +98,7 @@ export default class Scoring extends Component {
                     key={ s.id } { ...s } target={ target }
                     handleChange={ this.handleChange.bind( this, s.id ) }
                     selected={ this.state.selected[ s.id ] }
+                    decorate={ decorate }
                     /> 
                     
             ) }
