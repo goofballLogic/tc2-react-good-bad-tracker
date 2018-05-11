@@ -15,7 +15,7 @@ module.exports = {
         
         contentBase: "./docs",
         compress: true,
-        port: 8080,
+        port: process.env.PORT || 5002,
         host: "0.0.0.0",
         disableHostCheck: true
         

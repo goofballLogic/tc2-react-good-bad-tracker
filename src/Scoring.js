@@ -73,20 +73,12 @@ export default class Scoring extends Component {
         selected[ scoreeId ] = ( i === NEITHER ) ? undefined : i;
         this.setState( { selected } );            
         const { handleChange, target } = this.props;
-        const deltas = Object.keys( selected )
-            .map( key => [ key, selected[ key ] ] )
-            .reduce( ( index, [ key, value ] ) => ( {
-            
-                ...index,
-                [ key ]: value === UP ? target.upScore : value === DOWN ? -target.downScore : undefined
-            
-            } ), {} );
-        if ( handleChange ) { handleChange( deltas ); }
+        if ( handleChange ) { handleChange( selected ); }
         
     }
     
     render() {
-        
+
         const { target, scorees, decorate = thru } = this.props;
         if ( !( target && scorees ) ) return null;
         return <div className={decorate( "scoring" )}>
