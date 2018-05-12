@@ -9,24 +9,24 @@ const DOWN = "down", UP = "up", NEITHER = "-";
 
 const targetOptions = target => [
     
-    target.downScore ? { value: DOWN, child: <No /> } : undefined,
+    target.scores.find( s => s.downScore ) ? { value: DOWN, child: <No /> } : undefined,
     { value: NEITHER, child: <Not /> },
-    target.upScore ? { value: UP, child: <Yes /> } : undefined
+    target.scores.find( s => s.upScore ) ? { value: UP, child: <Yes /> } : undefined
     
 ].filter( x => x );
 
 const thru = x => x;
 
 const scoreOf = ( selected, target ) => 
-    selected === UP ? <span className="up">{target.upScore}</span> :
-    selected === DOWN ? <span className="down">{target.downScore}</span> :
-    null;
+    ( selected === UP && target.upScore ) ? <span className="up">{target.upScore}</span> :
+    ( selected === DOWN && target.downScore ) ? <span className="down">{target.downScore}</span> :
+    <span className="nothing" />;
 
 const num = x => Number( x ) || 0;
 
 const scoreResult = ( score, selected, target ) =>
-    selected === UP ? <span className="up">{ num( score ) + num( target.upScore ) }</span> :
-    selected === DOWN ? <span className="down">{ num( score ) - num( target.downScore ) }</span> :
+    selected === UP ? <span className="up">{ target.scores.reduce( ( sum, x ) => sum + num( x.upScore ), num( score ) ) }</span> :
+    selected === DOWN ? <span className="down">{ target.scores.reduce( ( sum, x ) => sum - num( x.downScore ), num( score ) ) }</span> :
     null;
 
 const Scoree = ( { id, name, score, target, selected, handleChange, decorate } ) => <tr className={decorate( "scoree" )}>
@@ -40,7 +40,11 @@ const Scoree = ( { id, name, score, target, selected, handleChange, decorate } )
             handleChange = { handleChange } />
     </td>
     <td className={decorate( "score" )}>{score}</td>
-    <td className={decorate( "score-diff" )}>{scoreOf( selected, target )}</td>
+    {target.scores.map( s =>
+       
+       <td key={s.id} className={decorate( `score-diff ${s.id}` )}>{scoreOf( selected, s )}</td>
+
+    ) }
     <td className={decorate( "score-result" )}>{scoreResult( score, selected, target )}</td>
     
 </tr>;
@@ -83,18 +87,24 @@ export default class Scoring extends Component {
         if ( !( target && scorees ) ) return null;
         return <div className={decorate( "scoring" )}>
     
-            <table><tbody>
-            { scorees.map( s => 
-            
-                <Scoree 
-                    key={ s.id } { ...s } target={ target }
-                    handleChange={ this.handleChange.bind( this, s.id ) }
-                    selected={ this.state.selected[ s.id ] }
-                    decorate={ decorate }
-                    /> 
-                    
-            ) }
-            </tbody></table>
+            <table>
+                <thead>
+                    <th colspan="3">&nbsp;</th>
+                    { target.scores.map( s => <th>{s.component}</th> ) }
+                </thead>
+                <tbody>
+                { scorees.map( s => 
+                
+                    <Scoree 
+                        key={ s.id } { ...s } target={ target }
+                        handleChange={ this.handleChange.bind( this, s.id ) }
+                        selected={ this.state.selected[ s.id ] }
+                        decorate={ decorate }
+                        /> 
+                        
+                ) }
+                </tbody>
+            </table>
             
         </div>;
         
