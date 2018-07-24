@@ -1,1 +1,189 @@
-!function(e,t){if("object"==typeof exports&&"object"==typeof module)module.exports=t(require("react"));else if("function"==typeof define&&define.amd)define(["react"],t);else{var n="object"==typeof exports?t(require("react")):t(e.react);for(var r in n)("object"==typeof exports?exports:e)[r]=n[r]}}(window,function(e){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:r})},n.r=function(e){Object.defineProperty(e,"__esModule",{value:!0})},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=8)}([function(t,n){t.exports=e},function(e,t,n){var r=n(0);function o(e){return r.createElement("svg",e,r.createElement("circle",{cx:"12",cy:"12",r:"12"}))}o.displayName="Not",o.defaultProps={viewBox:"-2 -2 28 28"},e.exports=o,o.default=o},function(e,t,n){var r=n(0);function o(e){return r.createElement("svg",e,r.createElement("path",{d:"M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.597 17.954l-4.591-4.55-4.555 4.596-1.405-1.405 4.547-4.592-4.593-4.552 1.405-1.405 4.588 4.543 4.545-4.589 1.416 1.403-4.546 4.587 4.592 4.548-1.403 1.416z"}))}o.displayName="No",o.defaultProps={viewBox:"-2 -2 28 28"},e.exports=o,o.default=o},function(e,t,n){var r=n(0);function o(e){return r.createElement("svg",e,r.createElement("path",{d:"M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.959 17l-4.5-4.319 1.395-1.435 3.08 2.937 7.021-7.183 1.422 1.409-8.418 8.591z"}))}o.displayName="Yes",o.defaultProps={viewBox:"-2 -2 28 28"},e.exports=o,o.default=o},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r,o=n(0),a=(r=o)&&r.__esModule?r:{default:r};t.default=function(e){var t=e.name,n=e.className,r=e.options,o=e.selected,u=e.handleChange;return a.default.createElement("span",{className:n?"one-of "+n:"one-of"},r.map(function(e){var n=e.value,r=e.child;return a.default.createElement("label",{key:n,className:"one-of-option one-of-option-"+n},a.default.createElement("input",{type:"radio",name:t,value:n,checked:o==n,onChange:function(e){return u(e,n)}}),a.default.createElement("span",{className:"content"},r))}))}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},o=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,o=!1,a=void 0;try{for(var u,c=e[Symbol.iterator]();!(r=(u=c.next()).done)&&(n.push(u.value),!t||n.length!==t);r=!0);}catch(e){o=!0,a=e}finally{try{!r&&c.return&&c.return()}finally{if(o)throw a}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),a=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),u=n(0),c=d(u),l=d(n(4)),i=d(n(3)),f=d(n(2)),s=d(n(1));function d(e){return e&&e.__esModule?e:{default:e}}var p="-",m=function(e){return e},v=function(e){return Number(e)||0},y=function(e){var t=e.id,n=e.name,r=e.score,o=e.target,a=e.selected,u=e.handleChange,d=e.decorate;return c.default.createElement("tr",{className:d("scoree")},c.default.createElement("td",{className:d("name")},n),c.default.createElement("td",null,c.default.createElement(l.default,{name:t,options:function(e){return[e.downScore?{value:"down",child:c.default.createElement(f.default,null)}:void 0,{value:p,child:c.default.createElement(s.default,null)},e.upScore?{value:"up",child:c.default.createElement(i.default,null)}:void 0].filter(function(e){return e})}(o),selected:a||p,handleChange:u})),c.default.createElement("td",{className:d("score")},r),c.default.createElement("td",{className:d("score-diff")},function(e,t){return"up"===e?c.default.createElement("span",{className:"up"},t.upScore):"down"===e?c.default.createElement("span",{className:"down"},t.downScore):null}(a,o)),c.default.createElement("td",{className:d("score-result")},function(e,t,n){return"up"===t?c.default.createElement("span",{className:"up"},v(e)+v(n.upScore)):"down"===t?c.default.createElement("span",{className:"down"},v(e)-v(n.downScore)):null}(r,a,o)))},b=function(e){function t(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var e=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.state={selected:{}},e}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,u.Component),a(t,[{key:"handleChange",value:function(e,t,n){var a=this.state.selected;a[e]=n===p?void 0:n,this.setState({selected:a});var u=this.props,c=u.handleChange,l=u.target,i=Object.keys(a).map(function(e){return[e,a[e]]}).reduce(function(e,t){var n=o(t,2),a=n[0],u=n[1];return r({},e,function(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}({},a,"up"===u?l.upScore:"down"===u?-l.downScore:void 0))},{});c&&c(i)}},{key:"render",value:function(){var e=this,t=this.props,n=t.target,o=t.scorees,a=t.decorate,u=void 0===a?m:a;return n&&o?c.default.createElement("div",{className:u("scoring")},c.default.createElement("table",null,c.default.createElement("tbody",null,o.map(function(t){return c.default.createElement(y,r({key:t.id},t,{target:n,handleChange:e.handleChange.bind(e,t.id),selected:e.state.selected[t.id],decorate:u}))})))):null}}],[{key:"getDerivedStateFromProps",value:function(e,t){return e.target&&t.targetId===e.target.id?null:{targetId:e.target?e.target.id:void 0,selected:{}}}}]),t}();t.default=b},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},o="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};t.default=function(e,t){return l(e).map(function(e){return s(e,t,d(e,t))})};var a,u=n(0),c=(a=u)&&a.__esModule?a:{default:a};var l=function e(t){return(n=t,Array.isArray(n)?n:[].concat(n||[])).map(function(e){return"object"===(void 0===e?"undefined":o(e))?e:{prop:e}}).map(function(e){return"key"in e?e:r({},e,{key:e.prop})}).map(function(e){return"className"in e?e:r({},e,{className:e.prop||e.key})}).map(function(t){return"items"in t?r({},t,{items:e(t.items)}):t});var n},i=function(e,t){return e.className?function(e,t,n){return e.split(" ").map(function(e){return function(e,t,n){switch(e){case"{prop}":return t.prop;case"{key}":return t.key;case"{truthiness}":return(!!n[t.prop]).toString();default:return e}}(e,t,n)}).join(" ")}(e.className,e,t):e.propName},f=function(e,t){return e.keyProp?t[e.keyProp]:e.key},s=function(e,t,n){return e.div?c.default.createElement("div",{key:f(e,t),className:i(e,t)},n):c.default.createElement("span",{key:f(e,t),className:i(e,t)},n)},d=function e(t,n){return"items"in t?t.items.map(function(t){return s(t,n,e(t,n))}):n?n[t.prop]:null}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=a(n(0)),o=a(n(6));function a(e){return e&&e.__esModule?e:{default:e}}var u=Date.now(),c=function(e,t){return n=(e.upScore||0)+(e.downScore||0),(t.upScore||0)+(t.downScore||0)-n;var n},l=function(){},i=function(e){return e};t.default=function(e){var t=e.items,n=e.name,a=void 0===n?"menu-"+u+"-"+Math.random():n,f=e.onChange,s=void 0===f?l:f,d=e.chosen,p=e.template,m=e.decorate,v=void 0===m?i:m;return r.default.createElement("section",{className:v("menu "+(d?"chosen":""))},r.default.createElement("div",{className:v("choices")},t.slice(0).sort(c).map(function(e){return r.default.createElement("label",{className:v("choice"),key:e.id},r.default.createElement("input",{type:"radio",checked:!(!d||d.id!==e.id),name:a,value:e.id,onChange:function(t){return s(t,e)}}),r.default.createElement("div",{className:v("choice-content")},(0,o.default)(p,e),r.default.createElement("button",{mode:"button",className:v("choose"),onClick:function(t){return s(t,e)}},"Choose"),r.default.createElement("button",{mode:"button",className:v("cancel"),onClick:function(e){return s(e,void 0)}},"Done")))})))}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.Scoring=t.Menu=void 0;var r=a(n(7)),o=a(n(5));function a(e){return e&&e.__esModule?e:{default:e}}t.Menu=r.default,t.Scoring=o.default}])});
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory(require("react"));
+	else if(typeof define === 'function' && define.amd)
+		define(["react"], factory);
+	else {
+		var a = typeof exports === 'object' ? factory(require("react")) : factory(root["react"]);
+		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
+	}
+})(window, function(__WEBPACK_EXTERNAL_MODULE_react__) {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/index.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./node_modules/svg-react-loader/lib/loader.js!./svg/no.svg":
+/*!******************************************************************!*\
+  !*** ./node_modules/svg-react-loader/lib/loader.js!./svg/no.svg ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var React = __webpack_require__(/*! react */ \"react\");\n\nfunction No (props) {\n    return React.createElement(\"svg\",props,React.createElement(\"path\",{\"d\":\"M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.597 17.954l-4.591-4.55-4.555 4.596-1.405-1.405 4.547-4.592-4.593-4.552 1.405-1.405 4.588 4.543 4.545-4.589 1.416 1.403-4.546 4.587 4.592 4.548-1.403 1.416z\"}));\n}\n\nNo.displayName = \"No\";\n\nNo.defaultProps = {\"viewBox\":\"-2 -2 28 28\"};\n\nmodule.exports = No;\n\nNo.default = No;\n\n\n//# sourceURL=webpack:///./svg/no.svg?./node_modules/svg-react-loader/lib/loader.js");
+
+/***/ }),
+
+/***/ "./node_modules/svg-react-loader/lib/loader.js!./svg/not.svg":
+/*!*******************************************************************!*\
+  !*** ./node_modules/svg-react-loader/lib/loader.js!./svg/not.svg ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var React = __webpack_require__(/*! react */ \"react\");\n\nfunction Not (props) {\n    return React.createElement(\"svg\",props,React.createElement(\"circle\",{\"cx\":\"12\",\"cy\":\"12\",\"r\":\"12\"}));\n}\n\nNot.displayName = \"Not\";\n\nNot.defaultProps = {\"viewBox\":\"-2 -2 28 28\"};\n\nmodule.exports = Not;\n\nNot.default = Not;\n\n\n//# sourceURL=webpack:///./svg/not.svg?./node_modules/svg-react-loader/lib/loader.js");
+
+/***/ }),
+
+/***/ "./node_modules/svg-react-loader/lib/loader.js!./svg/yes.svg":
+/*!*******************************************************************!*\
+  !*** ./node_modules/svg-react-loader/lib/loader.js!./svg/yes.svg ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var React = __webpack_require__(/*! react */ \"react\");\n\nfunction Yes (props) {\n    return React.createElement(\"svg\",props,React.createElement(\"path\",{\"d\":\"M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.959 17l-4.5-4.319 1.395-1.435 3.08 2.937 7.021-7.183 1.422 1.409-8.418 8.591z\"}));\n}\n\nYes.displayName = \"Yes\";\n\nYes.defaultProps = {\"viewBox\":\"-2 -2 28 28\"};\n\nmodule.exports = Yes;\n\nYes.default = Yes;\n\n\n//# sourceURL=webpack:///./svg/yes.svg?./node_modules/svg-react-loader/lib/loader.js");
+
+/***/ }),
+
+/***/ "./src/Menu.js":
+/*!*********************!*\
+  !*** ./src/Menu.js ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _expand = __webpack_require__(/*! ./expand */ \"./src/expand.js\");\n\nvar _expand2 = _interopRequireDefault(_expand);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar seed = Date.now();\n\nvar generateName = function generateName() {\n    return \"menu-\" + seed + \"-\" + Math.random();\n};\nvar byScoreSum = function byScoreSum(a, b) {\n    return function (asum, bsum) {\n        return bsum - asum;\n    }((a.upScore || 0) + (a.downScore || 0), (b.upScore || 0) + (b.downScore || 0));\n};\nvar noop = function noop() {};\nvar thru = function thru(x) {\n    return x;\n};\n\nexports.default = function (_ref) {\n    var items = _ref.items,\n        _ref$name = _ref.name,\n        name = _ref$name === undefined ? generateName() : _ref$name,\n        _ref$onChange = _ref.onChange,\n        _onChange = _ref$onChange === undefined ? noop : _ref$onChange,\n        chosen = _ref.chosen,\n        template = _ref.template,\n        _ref$decorate = _ref.decorate,\n        decorate = _ref$decorate === undefined ? thru : _ref$decorate;\n\n    return _react2.default.createElement(\n        \"section\",\n        { className: decorate(\"menu \" + (chosen ? \"chosen\" : \"\")) },\n        _react2.default.createElement(\n            \"div\",\n            { className: decorate(\"choices\") },\n            items.slice(0).sort(byScoreSum).map(function (x) {\n                return _react2.default.createElement(\n                    \"label\",\n                    { className: decorate(\"choice\"), key: x.id },\n                    _react2.default.createElement(\"input\", { type: \"radio\", checked: !!(chosen && chosen.id === x.id), name: name, value: x.id, onChange: function onChange(e) {\n                            return _onChange(e, x);\n                        } }),\n                    _react2.default.createElement(\n                        \"div\",\n                        { className: decorate(\"choice-content\") },\n                        (0, _expand2.default)(template, x),\n                        _react2.default.createElement(\n                            \"button\",\n                            { mode: \"button\", className: decorate(\"choose\"), onClick: function onClick(e) {\n                                    return _onChange(e, x);\n                                } },\n                            \"Choose\"\n                        ),\n                        _react2.default.createElement(\n                            \"button\",\n                            { mode: \"button\", className: decorate(\"cancel\"), onClick: function onClick(e) {\n                                    return _onChange(e, undefined);\n                                } },\n                            \"Done\"\n                        )\n                    )\n                );\n            })\n        )\n    );\n};\n\n//# sourceURL=webpack:///./src/Menu.js?");
+
+/***/ }),
+
+/***/ "./src/OneOf.js":
+/*!**********************!*\
+  !*** ./src/OneOf.js ***!
+  \**********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = function (_ref) {\n    var name = _ref.name,\n        className = _ref.className,\n        options = _ref.options,\n        selected = _ref.selected,\n        handleChange = _ref.handleChange;\n    return _react2.default.createElement(\n        \"span\",\n        { className: className ? \"one-of \" + className : \"one-of\" },\n        options.map(function (_ref2) {\n            var value = _ref2.value,\n                child = _ref2.child;\n            return _react2.default.createElement(\n                \"label\",\n                { key: value, className: \"one-of-option one-of-option-\" + value },\n                _react2.default.createElement(\"input\", {\n                    type: \"radio\",\n                    name: name,\n                    value: value,\n                    checked: selected == value,\n                    onChange: function onChange(e) {\n                        return handleChange(e, value);\n                    }\n                }),\n                _react2.default.createElement(\n                    \"span\",\n                    { className: \"content\" },\n                    child\n                )\n            );\n        })\n    );\n};\n\n//# sourceURL=webpack:///./src/OneOf.js?");
+
+/***/ }),
+
+/***/ "./src/Scoring.js":
+/*!************************!*\
+  !*** ./src/Scoring.js ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _OneOf = __webpack_require__(/*! ./OneOf */ \"./src/OneOf.js\");\n\nvar _OneOf2 = _interopRequireDefault(_OneOf);\n\nvar _yes = __webpack_require__(/*! svg-react-loader!../svg/yes.svg */ \"./node_modules/svg-react-loader/lib/loader.js!./svg/yes.svg\");\n\nvar _yes2 = _interopRequireDefault(_yes);\n\nvar _no = __webpack_require__(/*! svg-react-loader!../svg/no.svg */ \"./node_modules/svg-react-loader/lib/loader.js!./svg/no.svg\");\n\nvar _no2 = _interopRequireDefault(_no);\n\nvar _not = __webpack_require__(/*! svg-react-loader!../svg/not.svg */ \"./node_modules/svg-react-loader/lib/loader.js!./svg/not.svg\");\n\nvar _not2 = _interopRequireDefault(_not);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nvar DOWN = \"down\",\n    UP = \"up\",\n    NEITHER = \"-\";\n\nvar targetOptions = function targetOptions(target) {\n    return [target.downScore ? { value: DOWN, child: _react2.default.createElement(_no2.default, null) } : undefined, { value: NEITHER, child: _react2.default.createElement(_not2.default, null) }, target.upScore ? { value: UP, child: _react2.default.createElement(_yes2.default, null) } : undefined].filter(function (x) {\n        return x;\n    });\n};\n\nvar thru = function thru(x) {\n    return x;\n};\n\nvar scoreOf = function scoreOf(selected, target) {\n    return selected === UP ? _react2.default.createElement(\n        \"span\",\n        { className: \"up\" },\n        target.upScore\n    ) : selected === DOWN ? _react2.default.createElement(\n        \"span\",\n        { className: \"down\" },\n        target.downScore\n    ) : null;\n};\n\nvar num = function num(x) {\n    return Number(x) || 0;\n};\n\nvar scoreResult = function scoreResult(score, selected, target) {\n    return selected === UP ? _react2.default.createElement(\n        \"span\",\n        { className: \"up\" },\n        num(score) + num(target.upScore)\n    ) : selected === DOWN ? _react2.default.createElement(\n        \"span\",\n        { className: \"down\" },\n        num(score) - num(target.downScore)\n    ) : null;\n};\n\nvar Scoree = function Scoree(_ref) {\n    var id = _ref.id,\n        name = _ref.name,\n        score = _ref.score,\n        target = _ref.target,\n        selected = _ref.selected,\n        handleChange = _ref.handleChange,\n        decorate = _ref.decorate;\n    return _react2.default.createElement(\n        \"tr\",\n        { className: decorate(\"scoree\") },\n        _react2.default.createElement(\n            \"td\",\n            { className: decorate(\"name\") },\n            name\n        ),\n        _react2.default.createElement(\n            \"td\",\n            null,\n            _react2.default.createElement(_OneOf2.default, {\n                name: id,\n                options: targetOptions(target),\n                selected: selected || NEITHER,\n                handleChange: handleChange })\n        ),\n        _react2.default.createElement(\n            \"td\",\n            { className: decorate(\"score\") },\n            score\n        ),\n        _react2.default.createElement(\n            \"td\",\n            { className: decorate(\"score-diff\") },\n            scoreOf(selected, target)\n        ),\n        _react2.default.createElement(\n            \"td\",\n            { className: decorate(\"score-result\") },\n            scoreResult(score, selected, target)\n        )\n    );\n};\n\nvar Scoring = function (_Component) {\n    _inherits(Scoring, _Component);\n\n    function Scoring() {\n        _classCallCheck(this, Scoring);\n\n        var _this = _possibleConstructorReturn(this, (Scoring.__proto__ || Object.getPrototypeOf(Scoring)).call(this));\n\n        _this.state = { selected: {} };\n\n        return _this;\n    }\n\n    _createClass(Scoring, [{\n        key: \"handleChange\",\n        value: function handleChange(scoreeId, e, i) {\n            var selected = this.state.selected;\n\n            selected[scoreeId] = i === NEITHER ? undefined : i;\n            this.setState({ selected: selected });\n            var _props = this.props,\n                handleChange = _props.handleChange,\n                target = _props.target;\n            // const deltas = Object.keys( selected )\n            //     .map( key => [ key, selected[ key ] ] )\n            //     .reduce( ( index, [ key, value ] ) => ( {\n\n            //         ...index,\n            //         [ key ]: {\n            //             value === UP ? target.upScore : value === DOWN ? -target.downScore : undefined\n\n            //     } ), {} );\n\n            if (handleChange) {\n                handleChange(selected);\n            }\n        }\n    }, {\n        key: \"render\",\n        value: function render() {\n            var _this2 = this;\n\n            var _props2 = this.props,\n                target = _props2.target,\n                scorees = _props2.scorees,\n                _props2$decorate = _props2.decorate,\n                decorate = _props2$decorate === undefined ? thru : _props2$decorate;\n\n            if (!(target && scorees)) return null;\n            return _react2.default.createElement(\n                \"div\",\n                { className: decorate(\"scoring\") },\n                _react2.default.createElement(\n                    \"table\",\n                    null,\n                    _react2.default.createElement(\n                        \"tbody\",\n                        null,\n                        scorees.map(function (s) {\n                            return _react2.default.createElement(Scoree, _extends({\n                                key: s.id }, s, { target: target,\n                                handleChange: _this2.handleChange.bind(_this2, s.id),\n                                selected: _this2.state.selected[s.id],\n                                decorate: decorate\n                            }));\n                        })\n                    )\n                )\n            );\n        }\n    }], [{\n        key: \"getDerivedStateFromProps\",\n        value: function getDerivedStateFromProps(nextProps, prevState) {\n\n            if (nextProps.target && prevState.targetId === nextProps.target.id) return null;\n            var nextState = {\n\n                targetId: nextProps.target ? nextProps.target.id : undefined,\n                selected: {}\n\n            };\n            return nextState;\n        }\n    }]);\n\n    return Scoring;\n}(_react.Component);\n\nexports.default = Scoring;\n\n//# sourceURL=webpack:///./src/Scoring.js?");
+
+/***/ }),
+
+/***/ "./src/expand.js":
+/*!***********************!*\
+  !*** ./src/expand.js ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nvar _typeof = typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; };\n\nexports.default = expand;\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar asArray = function asArray(x) {\n    return Array.isArray(x) ? x : [].concat(x || []);\n};\n\nvar asItems = function asItems(is) {\n    return asArray(is).map(function (i) {\n        return (typeof i === \"undefined\" ? \"undefined\" : _typeof(i)) === \"object\" ? i : { \"prop\": i };\n    }).map(function (i) {\n        return \"key\" in i ? i : _extends({}, i, { key: i.prop });\n    }).map(function (i) {\n        return \"className\" in i ? i : _extends({}, i, { className: i.prop || i.key });\n    }).map(function (i) {\n        return \"items\" in i ? _extends({}, i, { items: asItems(i.items) }) : i;\n    });\n};\n\nvar expandClassNameBit = function expandClassNameBit(classNameBit, ti, d) {\n\n    switch (classNameBit) {\n\n        case \"{prop}\":\n            return ti.prop;\n        case \"{key}\":\n            return ti.key;\n        case \"{truthiness}\":\n            return (!!d[ti.prop]).toString();\n        default:\n            return classNameBit;\n\n    }\n};\n\nvar expandClassName = function expandClassName(className, ti, d) {\n    return className.split(\" \").map(function (c) {\n        return expandClassNameBit(c, ti, d);\n    }).join(\" \");\n};\n\nvar classNameOf = function classNameOf(ti, d) {\n    return ti.className ? expandClassName(ti.className, ti, d) : ti.propName;\n};\n\nvar keyOf = function keyOf(ti, d) {\n    return ti.keyProp ? d[ti.keyProp] : ti.key;\n};\n\nvar element = function element(ti, d, content) {\n    return ti.div ? _react2.default.createElement(\n        \"div\",\n        { key: keyOf(ti, d), className: classNameOf(ti, d) },\n        content\n    ) : _react2.default.createElement(\n        \"span\",\n        { key: keyOf(ti, d), className: classNameOf(ti, d) },\n        content\n    );\n};\n\nvar contentOf = function contentOf(ti, d) {\n    return \"items\" in ti ? ti.items.map(function (tii) {\n        return element(tii, d, contentOf(tii, d));\n    }) : d ? d[ti.prop] : null;\n};\n\nfunction expand(t, d) {\n\n    return asItems(t).map(function (ti) {\n        return element(ti, d, contentOf(ti, d));\n    });\n}\n\n//# sourceURL=webpack:///./src/expand.js?");
+
+/***/ }),
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.Scoring = exports.Menu = undefined;\n\nvar _Menu = __webpack_require__(/*! ./Menu */ \"./src/Menu.js\");\n\nvar _Menu2 = _interopRequireDefault(_Menu);\n\nvar _Scoring = __webpack_require__(/*! ./Scoring */ \"./src/Scoring.js\");\n\nvar _Scoring2 = _interopRequireDefault(_Scoring);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.Menu = _Menu2.default;\nexports.Scoring = _Scoring2.default;\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "react":
+/*!************************!*\
+  !*** external "react" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = __WEBPACK_EXTERNAL_MODULE_react__;\n\n//# sourceURL=webpack:///external_%22react%22?");
+
+/***/ })
+
+/******/ });
+});

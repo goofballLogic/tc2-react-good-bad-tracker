@@ -109,23 +109,33 @@ const resolutions = [
 
 let nonce = Date.now();
 
-export function generateMenu( n ) {
+function generateScore( component ) {
+
+    const id = "score-" + nonce++;
+    const upScore = Math.ceil( Math.random() * 3 );
+    const downScore = Math.random() >= 0.4 
+        ? Math.random() >= 0.5 
+            ? upScore
+            : Math.ceil( upScore * Math.random() )
+        : undefined
+    return {
+
+        id,
+        upScore,
+        downScore,
+        component
+
+    };
+
+}
+export function generateMenu( itemCount, components = [ undefined ] ) {
     
-    return randoms( resolutions, n ).map( x => ( {
+    return randoms( resolutions, itemCount ).map( x => ( {
         
-        id: nonce++,
+        id: "menuitem-" + nonce++,
         ...x,
-        upScore: Math.ceil( Math.random() * 3 )
+        scores: components.map( c => generateScore( c ) )
         
-    } ) ).map( x => ( {
-        
-        ...x,
-        downScore: Math.random() >= 0.4
-            ? Math.random() >= 0.5
-                ? x.upScore
-                : Math.ceil( x.upScore * Math.random() )
-            : undefined
-            
     } ) );
     
 }
@@ -135,7 +145,7 @@ export function generateScorees( n ) {
     
     return randoms( names, n ).map( x => ( {
         
-        id: nonce++,
+        id: "person-" + nonce++,
         name: x,
         score: Math.ceil( Math.random() * 20 ) - 5
         
@@ -156,6 +166,18 @@ export const scoreeTemplate = {
 
 };
 
+export const goalsWithComponentsTemplate = [
+
+    "title",
+    "specifics",
+    "measurement",
+    {
+        "prop": "scores",
+        "items": [ "component" ]
+    }
+
+];
+
 export const goalsTemplate = [
     
     "title",
@@ -163,7 +185,7 @@ export const goalsTemplate = [
     "measurement",
     {
         
-        "key": "scores", 
+        "prop": "scores",
         "items": [
             
             { 

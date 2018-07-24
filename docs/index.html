@@ -184,6 +184,15 @@ title: Home
         display: none;
         
     }
+
+    .score-by-goal .scores ul,
+    .score-by-goal .scores li {
+
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+
+    }
     
     .score-by-person .choice .choice-content,
     .score-by-person .choice input:checked + .choice-content {
@@ -225,17 +234,20 @@ title: Home
         
     }
 
-    .scoring table {
-        
-        border-spacing: 5px;
-
-    }
     .scoring table td {
         
         vertical-align: middle;
         text-align: center;
         border: none;
+        padding: 0 5px;
         
+    }
+    .scoring table th {
+
+        font-weight: normal;
+        font-size: 10pt;
+        padding: 0 5px;
+
     }
     .scoring .one-of {
         
@@ -333,6 +345,18 @@ title: Home
     .scoring .score-diff .up::before {
         
         content: "+";
+        
+    }
+
+    .score-by-goal-and-component .scoring table {
+
+        border-collapse: collapse;
+
+    }
+    .score-by-goal-and-component .scoring .nothing::before {
+
+        display: inline-block;
+        content: "·";
         
     }
     

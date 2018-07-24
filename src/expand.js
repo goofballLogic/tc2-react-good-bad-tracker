@@ -47,9 +47,24 @@ const contentOf = ( ti, d ) => "items" in ti
     : d
         ? d[ ti.prop ] 
         : null;
-        
-export default function expand( t, d ) {
     
-    return asItems( t ).map( ti => element( ti, d, contentOf( ti, d ) ) );
+const contentsOf = ( ti, d ) => Array.isArray( d[ ti.prop ] )
+    ? <ul>{d[ ti.prop ].map( di => 
+    
+        <li>{contentOf( ti, di )}</li>
+    
+    )}</ul>
+    : contentOf( ti, d );
+
+export default function expand( template, data ) {
+    
+    return asItems( template )
+        .map( templateItem => element( 
+            
+            templateItem, 
+            data, 
+            contentsOf( templateItem, data )
+
+        ) );
     
 }
