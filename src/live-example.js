@@ -4,9 +4,94 @@ import { Menu } from "./index";
 import { Scoring } from "./index";
 import { generateMenu, goalsTemplate, generateScorees, scoreeTemplate, goalsWithComponentsTemplate } from "./live-example-data";
 
-// https://tc2-react-good-bad-tracker-goofballlogic.c9users.io
-
 const decorateMenu = x => x;
+
+class ListAndEditGoals extends Component {
+    
+    constructor() {
+        
+        super();
+        this.state = {
+            
+            items: generateMenu( 5 )
+
+        };
+        
+    }
+    
+    handleChange( e, chosen ) {
+        
+        this.setState( { 
+            
+            chosen: chosen ? JSON.parse( JSON.stringify( chosen ) ) : chosen
+            
+        } );
+        
+    }
+    
+    handleSave( e, edited ) {
+        
+        const { items, chosen } = this.state;
+        this.setState( { 
+            
+            items: chosen ? items.map( item => item.id === chosen.id ? chosen : item ) : items,
+            chosen: undefined
+            
+        } );
+
+    }
+    
+    handleArchive( e, { id, title } ) {
+        
+        const { items } = this.state;
+        if ( window.confirm( `Please confirm you want to archive this item: ${title}` ) ) {
+            
+            this.setState( { 
+                
+                items: items.filter( x => x.id !== id )
+                
+            } );
+            
+        }
+        
+    }
+    
+    handleDelete( e, { id, title } ) {
+        
+        const { items } = this.state;
+        if ( window.confirm( `Please confirm you want to delete this item: ${title}` ) ) {
+            
+            this.setState( { 
+                
+                items: items.filter( x => x.id !== id )
+                
+            } );
+            
+        }
+        
+    }
+    
+    render() {
+        
+        const { items } = this.state;
+        return <article className="list-and-edit-goals">
+        
+            <h3>Click on a goal to edit</h3>
+            <Menu   items={ items } 
+                    onChange={ this.handleChange.bind( this ) }
+                    onSave={ this.handleSave.bind( this ) }
+                    onArchive={ this.handleArchive.bind( this ) }
+                    onDelete={ this.handleDelete.bind( this ) }
+                    chosen={ this.state.chosen }
+                    template={ goalsTemplate }
+                    decorate={ decorateMenu }
+                    texts = {{ choose: "Edit", done: "Cancel", save: "Save" }} /> 
+            
+        </article>;
+        
+    }
+    
+}
 
 class ScoringByGoal extends Component {
     
@@ -69,6 +154,7 @@ class ScoringByGoal extends Component {
                 
                 <h3>Selected</h3>
                 <pre>{JSON.stringify(this.state.selected, null, 3 )}</pre>
+                
             </section>
             
         </article>;
@@ -218,6 +304,8 @@ const LiveExample = () => <div className="live-example">
     <ScoringByGoalAndComponent />
     <hr />
     <ScoringByPerson />
+    <hr />
+    <ListAndEditGoals />
     
 </div>;
 

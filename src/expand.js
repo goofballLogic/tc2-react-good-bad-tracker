@@ -39,31 +39,72 @@ const keyOf = ( ti, d ) => ti.keyProp
     : ti.key;
     
 const element = ( ti, d, content ) => 
-    ti.div ? <div key={ keyOf( ti, d ) } className={ classNameOf( ti, d ) }>{content}</div> :
-    <span key={ keyOf( ti, d ) } className={ classNameOf( ti, d ) }>{content}</span>;
+    ti.div 
+        ? <div key={ keyOf( ti, d ) } className={ classNameOf( ti, d ) }>{content}</div> 
+        : <span key={ keyOf( ti, d ) } className={ classNameOf( ti, d ) }>{content}</span>;
+
+const dangerouslyUpdateObject =
+
+    ( d, ti ) =>
     
-const contentOf = ( ti, d ) => "items" in ti
-    ? ti.items.map( tii => element( tii, d, contentOf( tii, d ) ) )
-    : d
-        ? d[ ti.prop ] 
-        : null;
+        e =>
+            
+            d[ ti.prop ] = e.target.value;
+        
+const controlElement =
+
+    ( ti, d, editable ) => {
+        
+        const editableType = ti.editable.type;
+        switch( editableType ) {
+            
+            case "textarea":
+                return <textarea name={ ti.prop } value={ d[ ti.prop ] } onChange={ dangerouslyUpdateObject( d, ti ) } />;
+            case "numeric":
+                return <input type="number" name={ ti.prop } value={ d[ ti.prop ] || "" } onChange={ dangerouslyUpdateObject( d, ti ) } />;
+            default:
+                return <input type="text" name={ ti.prop } value={ d[ ti.prop ] || "" } onChange={ dangerouslyUpdateObject( d, ti ) } />;
+                
+        }    
+        
+    };
+
+            
+const control =
     
-const contentsOf = ( ti, d ) => Array.isArray( d[ ti.prop ] )
-    ? <ul>{d[ ti.prop ].map( di => 
+    ( ti, d, editable ) =>
+        
+        <label>
+        
+            <span>{ ti.editable.label }</span>
+            { controlElement( ti, d, editable ) }
+                 
+        </label>;
     
-        <li>{contentOf( ti, di )}</li>
+const contentOf = ( ti, d, editable ) => "items" in ti
+    ? ti.items.map( tii => element( tii, d, contentOf( tii, d, editable ), editable ) )
+    : ( editable && ti.editable )
+        ? control( ti, d, editable )
+        : d
+            ? d[ ti.prop ] 
+            : null;
+    
+const contentsOf = ( ti, d, editable ) => Array.isArray( d[ ti.prop ] )
+    ? <ul>{d[ ti.prop ].map( ( di, diIndex ) => 
+ 
+        <li key={ keyOf( ti, di ) }>{contentOf( ti, di, editable )}</li>
     
     )}</ul>
-    : contentOf( ti, d );
+    : contentOf( ti, d, editable );
 
-export default function expand( template, data ) {
-    
+export default function expand( template, data, editable = false ) {
+ 
     return asItems( template )
         .map( templateItem => element( 
             
             templateItem, 
             data, 
-            contentsOf( templateItem, data )
+            contentsOf( templateItem, data, editable )
 
         ) );
     

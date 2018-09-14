@@ -173,37 +173,60 @@ export const goalsWithComponentsTemplate = [
     "measurement",
     {
         "prop": "scores",
-        "items": [ "component" ]
+        "items": [ "component" ],
+        "keyProp": "id"
     }
 
 ];
 
+export const editableGoalsTemplate = [
+    
+];
+
 export const goalsTemplate = [
     
-    "title",
-    "specifics",
-    "measurement",
     {
-        
+        "prop": "title",
+        "editable": {
+            "type": "text",
+            "label": "Title"
+        }
+    },
+    {
+        "prop": "specifics",
+        "editable": {
+            "type": "textarea",
+            "label": "Specifics"
+        }
+    },
+    {
+        "prop": "measurement",
+        "editable": {
+            "type": "text",
+            "label": "Measurement"
+        }
+    },
+    {
         "prop": "scores",
         "items": [
-            
             { 
-                
                 "key": "up",
                 "prop": "upScore",
-                "className": "score {key} {truthiness}"
-                
+                "className": "score {key} {truthiness}",
+                "editable": {
+                    "type": "numeric",
+                    "label": "Score for succeeding"
+                }
             },
             { 
                 "key": "down",
                 "prop": "downScore",
-                "className": "score {key} {truthiness}"
-                
+                "className": "score {key} {truthiness}",
+                "editable": {
+                    "type": "numeric",
+                    "label": "Score for failing"
+                }
             }
-        
         ]
-        
     }
-        
 ];

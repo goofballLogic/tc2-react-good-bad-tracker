@@ -86,13 +86,13 @@ title: Home
         padding: 10px;
         
     }
-    .choice input {
+    .choice input[type=radio] {
         
         position: absolute;
         left: -100px;
         
     }
-    .choice-content .title::before {
+    .choice:not(.editing) .choice-content .title::before {
         
         counter-increment: choice;
         content: counter(choice);
@@ -108,26 +108,31 @@ title: Home
         opacity: 0.5;
         
     }
-    .choice-content .title {
+    .choice:not(.editing) .choice-content .title {
         
         display: block;
         font-size: 1.5em;
         margin-bottom: 5px;
         
     }
-    .choice-content .specifics {
+    .choice:not(.editing)  .choice-content .specifics {
         
         display: block;
         font-style: italic;
         
     }
-    .choice-content .scores .none,
-    .choice-content .scores .false {
+    .choice:not(.editing) .choice-content .scores .none,
+    .choice:not(.editing) .choice-content .scores .false {
         
         display: none;
         
     }
-    .choice-content .score {
+    .choice .choice-content .score {
+        
+        display: inline-block;
+        
+    }
+    .choice:not(.editing) .choice-content .score {
         
         width: 2em;
         height: 2em;
@@ -143,7 +148,7 @@ title: Home
         background-color: #DFD;
         
     }
-    .choice-content .score.up::before {
+    .choice:not(.editing) .choice-content .score.up::before {
         
         content: "+";
         
@@ -154,7 +159,7 @@ title: Home
         background-color: #FDD;
         
     }
-    .choice-content .score.down::before {
+    .choice:not(.editing) .choice-content .score.down::before {
         
         content: "-";
         
@@ -164,6 +169,31 @@ title: Home
         display: none;
         
     }
+    .choice-content .actions {
+        
+        display: block;
+
+    }
+    .choice-content button {
+        
+        padding: 5px;
+        min-width: 100px;
+        margin-right: 5px;
+        background-color: #EEE;
+        border-radius: 2px;
+        
+    }
+    .choice-content .danger-actions {
+        
+        display: inline-block;
+        margin-left: 10px;
+        
+    }
+    .choice-content .danger-actions button {
+        
+        background-color: #FEE;
+        
+    }
     .choice-content .cancel {
         
         display: none;
@@ -171,12 +201,12 @@ title: Home
     }
     .choice-content .choose {
         
-        display: block;
+        display: inline-block;
         
     }
     .chosen .choice-content .cancel {
         
-        display: block;
+        display: inline-block;
         
     }
     .chosen .choice-content .choose {
@@ -184,16 +214,91 @@ title: Home
         display: none;
         
     }
+    .editing label {
+        
+        display: flex;
+        margin-bottom: 10px;
 
+    }
+    .editing label span {
+        
+        padding: 5px;
+        padding-left: 0;
+        width: 150px;
+        display: block;
+        
+    }
+    .chosen .choice-content input,
+    .chosen .choice-content textarea {
+        
+        padding: 5px;
+        border: none;
+        border-bottom: solid 1px black;
+        flex: 1;
+        
+    }
+    .list-and-edit-goals .scores ul,
+    .list-and-edit-goals .scores li,
     .score-by-goal .scores ul,
     .score-by-goal .scores li {
 
+        list-style: none;
         display: inline-block;
         padding: 0;
         margin: 0;
 
     }
-    
+    .editing, .editing input, .editing textarea {
+        
+        font-size: 10pt;
+        
+    }
+    .editing textarea {
+        
+        height: 80px;
+        
+    }
+    .editing .scores ul,
+    .editing .scores li {
+        
+        display: block;
+        width: 500px;
+        
+    }
+    .editing .scores .score {
+        
+        padding: 5px 0;
+        margin-bottom: 10px;
+        display: block;
+        
+        
+    }
+    .editing .scores .score input {
+        
+        margin-bottom: 0;
+        padding: 5px 0;
+        border-bottom: solid 1px black;
+        max-width: 50px;
+        flex-basis: auto;
+        background-color: transparent;
+        
+    }
+    .editing .scores .score label {
+        
+        margin-bottom: 0;
+        
+    }
+    .editing .scores .score label span:after {
+        
+        content: "+";
+        float: right;
+        
+    }
+    .editing .scores .score.down label span:after {
+        
+        content: "-";
+        
+    }
     .score-by-person .choice .choice-content,
     .score-by-person .choice input:checked + .choice-content {
         
