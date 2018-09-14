@@ -128,6 +128,7 @@ function generateScore( component ) {
     };
 
 }
+
 export function generateMenu( itemCount, components = [ undefined ] ) {
     
     return randoms( resolutions, itemCount ).map( x => ( {

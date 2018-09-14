@@ -71,12 +71,23 @@ class ListAndEditGoals extends Component {
         
     }
     
+    handleAdd( e ) {
+        
+        e.preventDefault();
+        const { items } = this.state;
+        const chosen = { id: Math.random() };
+        this.setState( { chosen } );
+        this.setState( { items: [ ...items, chosen ] } );
+        
+    }
+    
     render() {
         
         const { items } = this.state;
         return <article className="list-and-edit-goals">
         
             <h3>Click on a goal to edit</h3>
+            <button onClick={ this.handleAdd.bind( this )}>Add</button>
             <Menu   items={ items } 
                     onChange={ this.handleChange.bind( this ) }
                     onSave={ this.handleSave.bind( this ) }
