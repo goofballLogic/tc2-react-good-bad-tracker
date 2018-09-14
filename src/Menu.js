@@ -73,8 +73,10 @@ const withDefaults = func => props => func( {
     onChange: noop,
     decorate: thru,
     ...props,
-    texts: { ...defaultTexts, ...props.texts }
-    
+    texts: { ...defaultTexts, ...props.texts },
+    items: ( !props.chosen || props.items.find( x => x.id === props.chosen.id ) )
+        ? props.items
+        : [ ...props.items, props.chosen ]
 } );
 
 const Menu = 

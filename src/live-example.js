@@ -32,9 +32,11 @@ class ListAndEditGoals extends Component {
     handleSave( e, edited ) {
         
         const { items, chosen } = this.state;
+        const newItems = chosen ? items.filter( item => item.id !== chosen.id ) : items;
+        if ( chosen ) newItems.push( chosen );
         this.setState( { 
             
-            items: chosen ? items.map( item => item.id === chosen.id ? chosen : item ) : items,
+            items: newItems,
             chosen: undefined
             
         } );
@@ -74,10 +76,8 @@ class ListAndEditGoals extends Component {
     handleAdd( e ) {
         
         e.preventDefault();
-        const { items } = this.state;
         const chosen = { id: Math.random() };
         this.setState( { chosen } );
-        this.setState( { items: [ ...items, chosen ] } );
         
     }
     
