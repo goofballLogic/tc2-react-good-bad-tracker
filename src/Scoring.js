@@ -64,7 +64,7 @@ export default class Scoring extends Component {
         const nextState = { 
             
             targetId: nextProps.target ? nextProps.target.id : undefined, 
-            selected: {}
+            selected: nextProps.selected || {}
             
         };
         return nextState;
