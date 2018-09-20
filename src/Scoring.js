@@ -92,7 +92,7 @@ export default class Scoring extends Component {
                     <tr>
                         
                         <th colSpan="3">&nbsp;</th>
-                        { target.scores.map( s => <th>{s.component}</th> ) }
+                        { target.scores.map( s => <th key={s.id}>{s.component}</th> ) }
                         
                     </tr>
                 </thead>
